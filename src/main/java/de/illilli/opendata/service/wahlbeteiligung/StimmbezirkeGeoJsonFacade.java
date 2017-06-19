@@ -12,24 +12,34 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.illilli.opendata.service.AskFor;
 import de.illilli.opendata.service.Facade;
+import de.illilli.opendata.service.Integrator;
 import de.illilli.opendata.service.wahlbeteiligung.askfor.AskForWahldaten;
 import de.illilli.opendata.service.wahlbeteiligung.askfor.AskForWahlgebiet;
 import de.illilli.opendata.service.wahlbeteiligung.model.Wahldaten;
+import de.illilli.opendata.service.wahlbeteiligung.model.WahldatenIntegrator;
 
+/**
+ * Die Klasse StimmbezirkeGeoJsonFacade integriert die Informationen bzgl.
+ * Wahlgebiet und
+ */
 public class StimmbezirkeGeoJsonFacade implements Facade {
 
 	private FeatureCollection featureCollection = new FeatureCollection();
 
 	public StimmbezirkeGeoJsonFacade()
 			throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
+
 		AskFor<FeatureCollection> askForWahlgebiet = new AskForWahlgebiet();
-		featureCollection = askForWahlgebiet.getData();
 		AskFor<Wahldaten> askForWahldaten = new AskForWahldaten();
+
+		Integrator<FeatureCollection> integrator = new WahldatenIntegrator(askForWahlgebiet.getData(),
+				askForWahldaten.getData());
+		this.featureCollection = integrator.getData();
 	}
 
 	@Override
 	public String getJson() throws JsonProcessingException {
-		return new ObjectMapper().writeValueAsString(featureCollection);
+		return new ObjectMapper().writeValueAsString(this.featureCollection);
 	}
 
 }

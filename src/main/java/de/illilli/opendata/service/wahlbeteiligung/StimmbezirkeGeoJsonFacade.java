@@ -12,15 +12,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.illilli.opendata.service.AskFor;
 import de.illilli.opendata.service.Facade;
+import de.illilli.opendata.service.wahlbeteiligung.askfor.AskForWahldaten;
 import de.illilli.opendata.service.wahlbeteiligung.askfor.AskForWahlgebiet;
+import de.illilli.opendata.service.wahlbeteiligung.model.Wahldaten;
 
 public class StimmbezirkeGeoJsonFacade implements Facade {
-	
+
 	private FeatureCollection featureCollection = new FeatureCollection();
-	
-	public StimmbezirkeGeoJsonFacade() throws JsonParseException, JsonMappingException, MalformedURLException, IOException{
+
+	public StimmbezirkeGeoJsonFacade()
+			throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
 		AskFor<FeatureCollection> askForWahlgebiet = new AskForWahlgebiet();
 		featureCollection = askForWahlgebiet.getData();
+		AskFor<Wahldaten> askForWahldaten = new AskForWahldaten();
 	}
 
 	@Override

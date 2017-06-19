@@ -14,7 +14,7 @@ import de.illilli.opendata.service.AskFor;
 import de.illilli.opendata.service.Config;
 import de.illilli.opendata.service.wahlbeteiligung.model.Wahldaten;
 
-public class AskForWahlergebnis implements AskFor<Wahldaten> {
+public class AskForWahldaten implements AskFor<Wahldaten> {
 
 	private Wahldaten data;
 
@@ -24,11 +24,11 @@ public class AskForWahlergebnis implements AskFor<Wahldaten> {
 	 * @throws IOException
 	 * @throws MalformedURLException
 	 */
-	public AskForWahlergebnis() throws MalformedURLException, IOException {
+	public AskForWahldaten() throws MalformedURLException, IOException {
 		this(new URL(Config.getProperty("wahlergebnis.stimmbezirke.koeln")).openStream());
 	}
 
-	AskForWahlergebnis(InputStream input) throws JsonSyntaxException, IOException {
+	AskForWahldaten(InputStream input) throws JsonSyntaxException, IOException {
 		Gson gson = new Gson();
 		this.data = gson.fromJson(IOUtils.toString(input), Wahldaten.class);
 	}

@@ -24,7 +24,7 @@ public class AskForWahlergebnisTest {
 	@Test
 	public void test() throws MalformedURLException, IOException {
 		InputStream inputStream = this.getClass().getResourceAsStream("/wahldaten.stimmbezirke.koeln.json");
-		AskFor<Wahldaten> askFor = new AskForWahlergebnis(inputStream);
+		AskFor<Wahldaten> askFor = new AskForWahldaten(inputStream);
 		Wahldaten wahldaten = askFor.getData();
 		System.out.println(wahldaten.toString());
 	}

@@ -1,5 +1,8 @@
 package de.illilli.opendata.service.wahlbeteiligung;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
@@ -52,4 +55,32 @@ public class Service {
 		Facade facade = new DefaultFacade(DefaultFacade.INFO, "alive");
 		return facade.getJson();
 	}
+	
+	/**
+	 * Beispiel:
+	 * <ul>
+	 * <li><a href="http://localhost:8080/wahlbeteiligung/service/stimmbezirke"> /wahlbeteiligung/service/stimmbezirke</a></li>
+	 * <li><a href="http://localhost:8080/wahlbeteiligung/service/stimmbezirke?format=geojson"> /wahlbeteiligung/service/stimmbezirke?format=geojson</a></li>
+	 * </ul>
+
+	 * @return
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/stimmbezirke")
+	public String getStimmbezirke() throws MalformedURLException, IOException {
+		String format = request.getParameter("format");
+		Facade facade = null;
+		if ("geojson".equals(format)) {
+			logger.info("calling '/isochrone/service/stimmbezirke?format=geojson'");
+			facade = new StimmbezirkeGeoJsonFacade();
+		} else {
+			logger.info("calling '/isochrone/service/stimmbezirke'");
+			facade = new DefaultFacade(DefaultFacade.INFO, "please use format geojson");
+		}
+		return facade.getJson();
+	}
+	
 }

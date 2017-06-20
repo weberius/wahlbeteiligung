@@ -28,7 +28,7 @@ public class AskForWahldaten implements AskFor<Wahldaten> {
 		this(new URL(Config.getProperty("wahlergebnis.stimmbezirke.koeln")).openStream());
 	}
 
-	AskForWahldaten(InputStream input) throws JsonSyntaxException, IOException {
+	public AskForWahldaten(InputStream input) throws JsonSyntaxException, IOException {
 		Gson gson = new Gson();
 		this.data = gson.fromJson(IOUtils.toString(input), Wahldaten.class);
 	}

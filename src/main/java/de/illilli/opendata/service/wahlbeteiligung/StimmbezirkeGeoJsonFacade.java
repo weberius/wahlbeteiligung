@@ -37,6 +37,13 @@ public class StimmbezirkeGeoJsonFacade implements Facade {
 		this.featureCollection = integrator.getData();
 	}
 
+	public StimmbezirkeGeoJsonFacade(FeatureCollection featureCollection, Wahldaten wahldaten)
+			throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
+
+		Integrator<FeatureCollection> integrator = new WahldatenIntegrator(featureCollection, wahldaten);
+		this.featureCollection = integrator.getData();
+	}
+
 	@Override
 	public String getJson() throws JsonProcessingException {
 		return new ObjectMapper().writeValueAsString(this.featureCollection);

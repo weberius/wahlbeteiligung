@@ -55,14 +55,17 @@ public class Service {
 		Facade facade = new DefaultFacade(DefaultFacade.INFO, "alive");
 		return facade.getJson();
 	}
-	
+
 	/**
 	 * Beispiel:
 	 * <ul>
-	 * <li><a href="http://localhost:8080/wahlbeteiligung/service/stimmbezirke"> /wahlbeteiligung/service/stimmbezirke</a></li>
-	 * <li><a href="http://localhost:8080/wahlbeteiligung/service/stimmbezirke?format=geojson"> /wahlbeteiligung/service/stimmbezirke?format=geojson</a></li>
+	 * <li><a href="http://localhost:8080/wahlbeteiligung/service/stimmbezirke">
+	 * /wahlbeteiligung/service/stimmbezirke</a></li>
+	 * <li><a href=
+	 * "http://localhost:8080/wahlbeteiligung/service/stimmbezirke?format=geojson">
+	 * /wahlbeteiligung/service/stimmbezirke?format=geojson</a></li>
 	 * </ul>
-
+	 * 
 	 * @return
 	 * @throws MalformedURLException
 	 * @throws IOException
@@ -74,13 +77,13 @@ public class Service {
 		String format = request.getParameter("format");
 		Facade facade = null;
 		if ("geojson".equals(format)) {
-			logger.info("calling '/isochrone/service/stimmbezirke?format=geojson'");
+			logger.info("calling '/wahlbeteiligung/service/stimmbezirke?format=geojson'");
 			facade = new StimmbezirkeGeoJsonFacade();
 		} else {
-			logger.info("calling '/isochrone/service/stimmbezirke'");
+			logger.info("calling '/wahlbeteiligung/service/stimmbezirke'");
 			facade = new DefaultFacade(DefaultFacade.INFO, "please use format geojson");
 		}
 		return facade.getJson();
 	}
-	
+
 }

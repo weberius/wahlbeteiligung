@@ -3,6 +3,7 @@ package de.illilli.opendata.service.wahlbeteiligung.model;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.apache.log4j.Logger;
 import org.geojson.FeatureCollection;
 import org.junit.After;
 import org.junit.Before;
@@ -16,6 +17,8 @@ import de.illilli.opendata.service.wahlbeteiligung.askfor.AskForWahldaten;
 import de.illilli.opendata.service.wahlbeteiligung.askfor.AskForWahlgebiet;
 
 public class WahldatenIntegratorTest {
+
+	private static final Logger logger = Logger.getLogger(WahldatenIntegratorTest.class);
 
 	@Before
 	public void setUp() throws Exception {
@@ -38,7 +41,7 @@ public class WahldatenIntegratorTest {
 		Integrator<FeatureCollection> integrator = new WahldatenIntegrator(featureCollection, wahldaten);
 		FeatureCollection data = integrator.getData();
 
-		System.out.println(data.toString());
+		logger.info(data.toString());
 	}
 
 }

@@ -289,7 +289,7 @@ info.onAdd = function (map) {
 // method that we will use to update the control based on feature properties passed
 info.update = function (feature) {
     this._div.innerHTML = '<h4>Wahlbeteiligung</h4>' +  (feature ?
-        '<b>' + feature.id + ": " + (feature.properties.nichtwaehler * 100) + ' %</b>'
+        '<b>' + feature.id + ": " + (feature.properties.nichtwaehler * 100).toFixed(0) + ' %</b>'
         : 'Stimmbezirke');
 };
 
@@ -327,12 +327,12 @@ attributionControl.onAdd = function (map) {
 map.addControl(attributionControl);
 
 var zoomControl = L.control.zoom({
-  position: "bottomright"
+  position: "topleft"
 }).addTo(map);
 
 /* GPS enabled geolocation control set to follow the user's location */
 var locateControl = L.control.locate({
-  position: "bottomright",
+  position: "topleft",
   drawCircle: true,
   follow: true,
   setView: true,

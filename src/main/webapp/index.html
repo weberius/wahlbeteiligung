@@ -38,12 +38,6 @@
           <a class="navbar-brand" href="#">Wahlbeteiligung</a>
         </div>
         <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="search">
-            <div class="form-group has-feedback">
-                <input id="searchbox" type="text" placeholder="Search" class="form-control">
-                <span id="searchicon" class="fa fa-search form-control-feedback"></span>
-            </div>
-          </form>
           <ul class="nav navbar-nav">
             <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;About</a></li>
             <li class="dropdown">
@@ -64,9 +58,10 @@
         <div class="sidebar-wrapper">
           <div class="panel panel-default" id="features">
             <div class="panel-heading">
-              <h3 class="panel-title">Points of Interest
+              <h3 class="panel-title">Auswertung
               <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn"><i class="fa fa-chevron-left"></i></button></h3>
             </div>
+            <!-- 
             <div class="panel-body">
               <div class="row">
                 <div class="col-xs-8 col-md-8">
@@ -77,6 +72,7 @@
                 </div>
               </div>
             </div>
+            -->
             <div class="sidebar-table">
               <table class="table table-hover" id="feature-list">
                 <thead class="hidden">
@@ -111,52 +107,64 @@
         <div class="modal-content">
           <div class="modal-header">
             <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Welcome to the BootLeaf template!</h4>
+            <h4 class="modal-title">Wahlbeteiligung in Köln Landtagswahl 2012</h4>
           </div>
           <div class="modal-body">
             <ul class="nav nav-tabs nav-justified" id="aboutTabs">
-              <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
+              <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;&Uuml;ber dieses Projekt</a></li>
               <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;Metadata <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#boroughs-tab" data-toggle="tab">Boroughs</a></li>
-                  <li><a href="#subway-lines-tab" data-toggle="tab">Subway Lines</a></li>
-                  <li><a href="#theaters-tab" data-toggle="tab">Theaters</a></li>
-                  <li><a href="#museums-tab" data-toggle="tab">Museums</a></li>
+                  <li><a href="#boroughs-tab" data-toggle="tab">Wahlgebiete</a></li>
+                  <li><a href="#wahldaten-tab" data-toggle="tab">Wahldaten</a></li>
+                  <li><a href="#subway-lines-tab" data-toggle="tab">Strassenbahn Linien</a></li>
                 </ul>
               </li>
             </ul>
             <div class="tab-content" id="aboutTabsContent">
               <div class="tab-pane fade active in" id="about">
-                <p>A simple, responsive template for building web mapping applications with <a href="http://getbootstrap.com/">Bootstrap 3</a>, <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, and <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a>. Open source, MIT licensed, and available on <a href="https://github.com/bmcbride/bootleaf" target="_blank">GitHub</a>.</p>
-                <div class="panel panel-primary">
-                  <div class="panel-heading">Features</div>
-                  <ul class="list-group">
-                    <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>
-                    <li class="list-group-item">jQuery loading of external GeoJSON files</li>
-                    <li class="list-group-item">Logical multiple layer marker clustering via the <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank">leaflet marker cluster plugin</a></li>
-                    <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
-                    <li class="list-group-item">Responsive sidebar feature list synced with map bounds, which includes sorting and filtering via <a href="http://listjs.com/" target="_blank">list.js</a></li>
-                    <li class="list-group-item">Marker icons included in grouped layer control via the <a href="https://github.com/ismyrnow/Leaflet.groupedlayercontrol" target="_blank">grouped layer control plugin</a></li>
-                  </ul>
-                </div>
+              	<p>Dieses Projekt befindet sich in Entwicklung. Zur Zeit werden Wahldaten der Landtagswahl NRW 2012 verwendet. Die Wahlgebiete beruhen auf den Stimmbezirke zur Bundestagswahl 2013.</p>
+				<p>Das Projekt wahlbeteiligung soll unterschiedliche Wahlbeteiligung in unterschiedlichen geographischen Strukturen veranschaulichen. Es fokussiert sich zunächst auf die Wahlergebnisse im Bereich der Stadt Köln zu den Landtagswahlen.</p>
+				<p>Das Projekt integriert die Informationen aus den Projekten wahlergebnis und wahlgebiet und stellt die Zusammenhänge in einer Webanwendung dar. Die Darstellung erfolgt in der Art eines Choroplethen. Mit Klick auf eine Geographie werden zusätzlichen Informationen zur Verfügung gestellt.</p>
               </div>
               <div id="disclaimer" class="tab-pane fade text-danger">
-                <p>The data provided on this site is for informational and planning purposes only.</p>
-                <p>Absolutely no accuracy or completeness guarantee is implied or intended. All information on this map is subject to such variations and corrections as might result from a complete title search and/or accurate field survey.</p>
+				<p>
+					<strong>1. Haftungsbeschränkung</strong><br /> Die Inhalte des
+					Internetauftritts wurden mit größtmöglicher Sorgfalt und nach
+					bestem Gewissen erstellt. Dennoch übernimmt der Anbieter dieser
+					Webseite keine Gewähr für die Aktualität, Vollständigkeit und
+					Richtigkeit der bereitgestellten Seiten und Inhalte.
+				</p>
+				<p>
+					<strong>2. Externe Links</strong><br /> Die Webseite enthält
+					sog. „externe Links“ (Verlinkungen) zu anderen Webseiten, auf
+					deren Inhalt der Anbieter der Webseite keinen Einfluss hat. Aus
+					diesem Grund kann der Anbieter für diese Inhalte auch keine
+					Gewähr übernehmen.<br />
+				</p>
+				<p>
+					<strong>3. Datenschutz</strong><br /> Durch den Besuch des
+					Internetauftritts können Informationen (Datum, Uhrzeit,
+					aufgerufene Seite) über den Zugriff auf dem Server gespeichert
+					werden. Es werden keine personenbezogenenen (z. B. Name,
+					Anschrift oder E-Mail-Adresse) Daten, gespeichert.
+				</p>
+				<p>
+					<strong>Quelle</strong>: <a
+						href="http://www.mustervorlage.net/homepage-kostenlos">Disclaimer
+						und Websites erstellen</a>
+				</p>
               </div>
               <div class="tab-pane fade" id="boroughs-tab">
-                <p>Borough data courtesy of <a href="http://www.nyc.gov/html/dcp/pdf/bytes/nybbwi_metadata.pdf" target="_blank">New York City Department of City Planning</a></p>
+                <p>Stimmbezirke zur Bundestagswahl <a href="https://www.offenedaten-koeln.de/dataset/stimmbezirk" target="_blank">Offene Daten Köln</a></p>
+              </div>
+              <div class="tab-pane fade" id="wahldaten-tab">
+                <p>Landtagswahl 2012, Erststimmen <a href="https://www.offenedaten-koeln.de/dataset/landtagswahl-2012-erststimmen" target="_blank">Offene Daten Köln</a></p>
+                <p>Landtagswahl 2012, Zweitstimmen <a href="https://www.offenedaten-koeln.de/dataset/landtagswahl-2012-zweitstimmen" target="_blank">Offene Daten Köln</a></p>
               </div>
               <div class="tab-pane fade" id="subway-lines-tab">
-                <p><a href="http://spatialityblog.com/2010/07/08/mta-gis-data-update/#datalinks" target="_blank">MTA Subway data</a> courtesy of the <a href="http://www.urbanresearch.org/about/cur-components/cuny-mapping-service" target="_blank">CUNY Mapping Service at the Center for Urban Research</a></p>
-              </div>
-              <div class="tab-pane fade" id="theaters-tab">
-                <p>Theater data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Theaters/kdu2-865w" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
-              </div>
-              <div class="tab-pane fade" id="museums-tab">
-                <p>Museum data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Museums-and-Galleries/sat5-adpb" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
+                <p>Strecke Stadtbahn U-Bahn Koeln <a href="https://www.offenedaten-koeln.de/dataset/strecke-stadtbahn-u-bahn-koeln" target="_blank">Offene Daten Köln</a></p>
               </div>
             </div>
           </div>
@@ -205,7 +213,7 @@
           <div class="modal-header">
             <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">
-              Developed by <a href='http://bryanmcbride.com'>bryanmcbride.com</a>
+              Developed by <a href='http://weberius.github.io/'>Wolfram Eberius</a>
             </h4>
           </div>
           <div class="modal-body">
